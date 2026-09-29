@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Accessible HTML5 portfolio website demonstrating semantic structure, responsive design, SEO and WCAG accessibility."
+    >
+
+    <meta
+        name="keywords"
+        content="HTML5, accessibility, WCAG, portfolio, web development, semantic HTML"
+    >
+
+    <meta name="author" content="Preetam Kumar">
+
+    <meta
+        property="og:title"
+        content="Preetam Kumar | Accessible Web Developer Portfolio"
+    >
+
+    <meta
+        property="og:description"
+        content="A semantic and accessible HTML5 portfolio website."
+    >
+
+    <meta property="og:type" content="website">
+
+    <title>Preetam Kumar | Web Developer Portfolio</title>
+
+    <style>
+        /* =========================================
+           GLOBAL STYLES
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: #172033;
+            background-color: #f5f7fa;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: #005fcc;
+        }
+
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 3px solid #ffbf47;
+            outline-offset: 3px;
+        }
+
+        /* =========================================
+           SKIP LINK
+        ========================================= */
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 10px;
+            z-index: 9999;
+            padding: 12px 18px;
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        header {
+            background: #102a43;
+            color: #ffffff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        nav {
+            background: #0b1f33;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 5px;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: #1f5f8b;
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 70px 25px;
+            scroll-margin-top: 70px;
+        }
+
+        section:nth-child(even) {
+            background: #ffffff;
+        }
+
+        section h2 {
+            margin-bottom: 25px;
+            color: #102a43;
+            font-size: 2rem;
+        }
+
+        section h3 {
+            margin-bottom: 12px;
+            color: #243b53;
+        }
+
+        .section-intro {
+            max-width: 750px;
+            margin-bottom: 30px;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            min-height: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 25px;
+            background: #d9eaf7;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 24px;
+            background: #005fcc;
+            color: #ffffff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .button:hover,
+        .button:focus {
+            background: #003f88;
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           ABOUT
+        ========================================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 35px;
+        }
+
+        .about-card {
+            background: #f5f7fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #d9e2ec;
+        }
+
+        /* =========================================
+           SKILLS
+        ========================================= */
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            list-style: none;
+        }
+
+        .skills-list li {
+            background: #e8f1f8;
+            padding: 15px;
+            border-left: 5px solid #005fcc;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           PROJECTS
+        ========================================= */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #d9e2ec;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-number {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 5px 10px;
+            background: #005fcc;
+            color: #ffffff;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .project-card ul {
+            margin: 15px 0 15px 20px;
+        }
+
+        /* =========================================
+           ASIDE
+        ========================================= */
+
+        aside {
+            margin-top: 30px;
+            padding: 25px;
+            background: #fff8e6;
+            border-left: 5px solid #cc8800;
+        }
+
+        /* =========================================
+           CONTACT FORM
+        ========================================= */
+
+        form {
+            max-width: 700px;
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #627d98;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        input:invalid:not(:placeholder-shown),
+        textarea:invalid:not(:placeholder-shown) {
+            border-color: #b00020;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f4ea;
+            border-left: 5px solid #188038;
+            display: none;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background: #102a43;
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer a {
+            color: #ffffff;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav {
+                position: static;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 50px 18px;
+            }
+
+            .hero {
+                min-height: 450px;
+            }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Accessibility: Skip directly to the main content -->
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header role="banner">
+
+        <h1>Preetam Kumar</h1>
+
+        <p>
+            Web Developer | Student | UI Designer
+        </p>
+
+    </header>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <nav aria-label="Main navigation">
+
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main id="main-content">
+
+
+        <!-- =====================================
+             HOME
+        ====================================== -->
+
+        <section
+            id="home"
+            class="hero"
+            aria-labelledby="home-heading"
+        >
+
+            <h2 id="home-heading">
+                Hello, I'm Preetam Kumar
+            </h2>
+
+            <p>
+                Welcome to my accessible personal portfolio.
+                I create responsive, semantic and user-friendly
+                websites using modern web technologies.
+            </p>
+
+            <div>
+
+                <a
+                    class="button"
+                    href="#projects"
+                >
+                    View My Projects
+                </a>
+
+                <a
+                    class="button"
+                    href="#contact"
+                >
+                    Contact Me
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ABOUT
+        ====================================== -->
+
+        <section
+            id="about"
+            aria-labelledby="about-heading"
+        >
+
+            <h2 id="about-heading">
+                About Me
+            </h2>
+
+            <div class="about-grid">
+
+                <article class="about-card">
+
+                    <h3>
+                        Who I Am
+                    </h3>
+
+                    <p>
+                        I am a passionate web development student
+                        interested in creating websites that are
+                        accessible, responsive and easy to use.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        My goal is to build websites that work well
+                        for everyone, including people who use
+                        keyboards, screen readers and other
+                        assistive technologies.
+                    </p>
+
+                </article>
+
+
+                <aside aria-labelledby="skills-heading">
+
+                    <h3 id="skills-heading">
+                        My Skills
+                    </h3>
+
+                    <ul class="skills-list">
+
+                        <li>HTML5</li>
+
+                        <li>CSS3</li>
+
+                        <li>JavaScript</li>
+
+                        <li>Accessibility</li>
+
+                        <li>Responsive Design</li>
+
+                        <li>SEO</li>
+
+                    </ul>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PROJECTS
+        ====================================== -->
+
+        <section
+            id="projects"
+            aria-labelledby="projects-heading"
+        >
+
+            <h2 id="projects-heading">
+                My Projects
+            </h2>
+
+            <p class="section-intro">
+                Here are some example projects demonstrating
+                my web development skills.
+            </p>
+
+
+            <div class="project-grid">
+
+
+                <article class="project-card">
+
+                    <span class="project-number">
+                        Project 01
+                    </span>
+
+                    <h3>
+                        Accessible Portfolio
+                    </h3>
+
+                    <p>
+                        A semantic HTML5 portfolio designed
+                        according to accessibility principles.
+                    </p>
+
+                    <ul>
+
+                        <li>Semantic HTML</li>
+
+                        <li>WCAG principles</li>
+
+                        <li>Responsive CSS</li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <span class="project-number">
+                        Project 02
+                    </span>
+
+                    <h3>
+                        To-Do Application
+                    </h3>
+
+                    <p>
+                        A simple task management application
+                        demonstrating JavaScript fundamentals.
+                    </p>
+
+                    <ul>
+
+                        <li>JavaScript</li>
+
+                        <li>DOM manipulation</li>
+
+                        <li>Keyboard support</li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <span class="project-number">
+                        Project 03
+                    </span>
+
+                    <h3>
+                        Responsive Website
+                    </h3>
+
+                    <p>
+                        A mobile-friendly website that adapts
+                        to different screen sizes.
+                    </p>
+
+                    <ul>
+
+                        <li>CSS Grid</li>
+
+                        <li>Media queries</li>
+
+                        <li>Responsive design</li>
+
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ACCESSIBILITY INFORMATION
+        ====================================== -->
+
+        <section
+            aria-labelledby="accessibility-heading"
+        >
+
+            <h2 id="accessibility-heading">
+                Accessibility
+            </h2>
+
+            <article>
+
+                <p>
+                    This website demonstrates several accessibility
+                    techniques recommended for modern websites.
+                </p>
+
+                <br>
+
+                <ul>
+
+                    <li>
+                        Semantic HTML5 elements are used throughout
+                        the website.
+                    </li>
+
+                    <li>
+                        Navigation can be accessed using the keyboard.
+                    </li>
+
+                    <li>
+                        Form controls have associated labels.
+                    </li>
+
+                    <li>
+                        Visible keyboard focus indicators are provided.
+                    </li>
+
+                    <li>
+                        A skip-to-content link is provided.
+                    </li>
+
+                    <li>
+                        ARIA labels are used where appropriate.
+                    </li>
+
+                    <li>
+                        The website supports reduced-motion preferences.
+                    </li>
+
+                </ul>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT
+        ====================================== -->
+
+        <section
+            id="contact"
+            aria-labelledby="contact-heading"
+        >
+
+            <h2 id="contact-heading">
+                Contact Me
+            </h2>
+
+            <p>
+                If you would like to contact me, complete the
+                accessible form below.
+            </p>
+
+
+            <form
+                id="contactForm"
+                aria-label="Contact form"
+                novalidate
+            >
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        autocomplete="name"
+                        placeholder="Enter your full name"
+                        required
+                        aria-required="true"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        autocomplete="email"
+                        placeholder="example@email.com"
+                        required
+                        aria-required="true"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="Enter the subject"
+                        required
+                        aria-required="true"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message here"
+                        required
+                        aria-required="true"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+                    Send Message
+                </button>
+
+
+                <div
+                    id="formMessage"
+                    class="form-message"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer role="contentinfo">
+
+        <p>
+            &copy; 2026 Preetam Kumar.
+            All rights reserved.
+        </p>
+
+        <ul>
+
+            <li>
+                <a
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my GitHub profile"
+                >
+                    GitHub
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my LinkedIn profile"
+                >
+                    LinkedIn
+                </a>
+            </li>
+
+        </ul>
+
+        <p>
+            Built with semantic HTML5 and accessibility in mind.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /*
+         * CONTACT FORM
+         */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        contactForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            /*
+             * Check whether the form is valid.
+             */
+
+            if (!contactForm.checkValidity()) {
+
+                formMessage.style.display = "block";
+
+                formMessage.textContent =
+                    "Please complete all required fields correctly.";
+
+                return;
+            }
+
+
+            /*
+             * Display success message.
+             *
+             * This demonstration does not actually send
+             * an email to a server.
+             */
+
+            formMessage.style.display = "block";
+
+            formMessage.textContent =
+                "Thank you! Your message has been submitted successfully.";
+
+            contactForm.reset();
+
+        });
+
+
+        /*
+         * Keyboard accessibility:
+         * Pressing Escape can return focus to the page.
+         */
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                document.activeElement.blur();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
